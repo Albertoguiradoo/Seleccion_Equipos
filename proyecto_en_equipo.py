@@ -10,11 +10,11 @@ def main(page: ft.Page):
 
     t = ft.Text()
     b = ft.ElevatedButton(text="seleccionar", on_click=boton)
-    equipos = ft.Dropdown(label="Equipos",width=500,options=[ft.dropdown.Option("Mogón CF"),
-                                        ft.dropdown.Option("Villacarrillo"),
-                                        ft.dropdown.Option("Club Deportivo Alcoyano"),
-                                        ft.dropdown.Option("Málaga CF"),
-                                        ft.dropdown.Option("New Castle UFC"),])
+    equipos = ft.Dropdown(label="Equipos",width=400,options=[ft.dropdown.Option("Cadiz CF"),
+                                                            ft.dropdown.Option("Villacarrillo"),
+                                                            ft.dropdown.Option("Club Deportivo Alcoyano"),
+                                                            ft.dropdown.Option("Málaga CF"),
+                                                            ft.dropdown.Option("New Castle UFC"),])
     page.add(equipos, b, t)
 
 

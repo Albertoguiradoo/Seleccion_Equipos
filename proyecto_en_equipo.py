@@ -8,6 +8,9 @@ def main(page: ft.Page):
 
 
 
+    img = ft.Image(src=f"CadizCF.jpg")
+    
+    page.add(img)
 
 
 
@@ -20,5 +23,4 @@ def main(page: ft.Page):
 
 
 
-
-ft.app(target=main)
+ft.app(target=main,assets_dir="Imágenes")

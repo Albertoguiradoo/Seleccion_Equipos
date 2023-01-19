@@ -16,8 +16,10 @@ def main(page: ft.Page):
                 
             
         elif (equipos.value == "NewCastle UFC"):
-            img.src = "Imágenes/NewcastleUFC.pmg"
-                
+            img.src = "Imágenes/NewcastleUFC.png"
+        
+        elif (equipos.value == "Club Deportivo Alcoyano"):
+            img.src = "Imágenes/CDAlcoyano.png"
         page.update()
 
 

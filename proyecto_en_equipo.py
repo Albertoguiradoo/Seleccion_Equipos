@@ -25,6 +25,7 @@ def main(page: ft.Page):
         
         elif (equipos.value == "Club Deportivo Alcoyano"):
             img.src = "Imágenes/CDAlcoyano.png"
+                
         page.update()
 
 
@@ -45,8 +46,10 @@ def main(page: ft.Page):
 
     page.add(equipos,img)
     
+    bt=ft.ElevatedButton(text="Seleccionar equipo", on_click="")
+                              
 
-
+    page.add(bt)
     
 
        

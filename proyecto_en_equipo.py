@@ -4,11 +4,26 @@ def main(page: ft.Page):
     page.title = "Proyecto Futbolístico"
     #page.vertical_alignment = ft.MainAxisAlignment.CENTER//// esto es para centrarlo en el medio
     
-    vEquipos=["Cadiz CF","AOVE Villacarrillo","Málaga CF"," NewCastle UFC","Club Deportivo Alcoyano"]
+    vEquipos=["Cadiz CF","AOVE Villacarrillo","Málaga CF","FC Barcelona","Club Deportivo Alcoyano"]
     vEquipos_Seleccionados = []
 
 
-   
+    def botonGuardar(e):
+        equipo = equipos.value 
+        if (vEquipos_Seleccionados.count(equipo)==0):
+            vEquipos_Seleccionados.append(equipo)
+            print(vEquipos_Seleccionados)
+        else:
+            dlg = ft.AlertDialog(title=ft.Text("EQUIPO REPETIDO!!!"))
+            page.dialog = dlg
+            dlg.open = True
+            page.update()
+    
+        
+        
+
+
+    
     
     def cambiarFoto(e):
         if (equipos.value == "Cadiz CF"):
@@ -20,8 +35,8 @@ def main(page: ft.Page):
         elif (equipos.value == "Málaga CF"):
             img.src = "Imágenes/MalagaCF.png"
             
-        elif (equipos.value == "NewCastle UFC"):
-            img.src = "Imágenes/NewcastleUFC.png"
+        elif (equipos.value == "FC Barcelona"):
+            img.src = "Imágenes/barsa.png"
         
         elif (equipos.value == "Club Deportivo Alcoyano"):
             img.src = "Imágenes/CDAlcoyano.png"
@@ -46,7 +61,7 @@ def main(page: ft.Page):
 
     page.add(equipos,img)
     
-    bt=ft.ElevatedButton(text="Seleccionar equipo", on_click="")
+    bt=ft.ElevatedButton(text="Seleccionar equipo", on_click=botonGuardar)
                               
 
     page.add(bt)

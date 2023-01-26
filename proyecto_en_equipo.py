@@ -9,64 +9,75 @@ def main(page: ft.Page):
 
 
     def botonGuardar(e):
-        equipo = equipos.value 
+        equipo = dropDownEquipos.value 
         if (vEquipos_Seleccionados.count(equipo)==0):
             vEquipos_Seleccionados.append(equipo)
-            print(vEquipos_Seleccionados)
+            lv.controls.append(ft.Text(equipo))
         else:
             dlg = ft.AlertDialog(title=ft.Text("EQUIPO REPETIDO!!!"))
             page.dialog = dlg
             dlg.open = True
-            page.update()
+        page.update()
     
         
-        
-
-
     
     
     def cambiarFoto(e):
-        if (equipos.value == "Cadiz CF"):
+        if (
+            dropDownEquipos.value == "Cadiz CF"):
             img.src = "Imágenes/CadizCF.jpg"
                 
-        elif (equipos.value == "AOVE Villacarrillo"):
+        elif (
+            dropDownEquipos.value == "AOVE Villacarrillo"):
             img.src = "Imágenes/AOVE Villacarrillo.png"
                 
-        elif (equipos.value == "Málaga CF"):
+        elif (
+            dropDownEquipos.value == "Málaga CF"):
             img.src = "Imágenes/MalagaCF.png"
             
-        elif (equipos.value == "FC Barcelona"):
+        elif (
+            dropDownEquipos.value == "FC Barcelona"):
             img.src = "Imágenes/barsa.png"
         
-        elif (equipos.value == "Club Deportivo Alcoyano"):
+        elif (
+            dropDownEquipos.value == "Club Deportivo Alcoyano"):
             img.src = "Imágenes/CDAlcoyano.png"
                 
         page.update()
 
 
 
-    equipos = ft.Dropdown(label="Equipos",on_change=cambiarFoto, width=400)
+#---------------Fin definiciones de funciones ------------
 
 
-    #Inserto los equipos desde la lista   
-    for equipo in vEquipos:
-        equipos.options.append(ft.dropdown.Option(equipo))
 
-    
+ #Componentes Flet
     img = ft.Image(src=f"g")
-    
-    
-    
-
-
-    page.add(equipos,img)
-    
     bt=ft.ElevatedButton(text="Seleccionar equipo", on_click=botonGuardar)
+    dropDownEquipos = ft.Dropdown(label="Equipos",on_change=cambiarFoto, width=400)
+    lv = ft.ListView(expand=1, spacing=5, padding=20, auto_scroll=True)
+
+    #----------Fin definiciones de variables----------------
+
+    
+
+    
+#---------------Inicio programa principal----------------
+
+    #Inserto los 
+    # dropDownEquipos desde la lista   
+    for equipo in vEquipos:
+        dropDownEquipos.options.append(ft.dropdown.Option(equipo))
+
+    
+    
+    #Añadir componestes a la vista
+    page.add(dropDownEquipos,img,bt,lv)
+    
+   
                               
 
-    page.add(bt)
-    
 
-       
+
    
 ft.app(target=main,assets_dir="Imágenes")

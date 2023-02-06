@@ -45,6 +45,16 @@ def main(page: ft.Page):
                 
         page.update()
 
+    def cargarequipos():
+        vEquipos=[]
+        f=open("Equipos.txt", "r")
+
+        for linea in f:
+            vEquipos.append(linea)
+
+        f.close()
+        return vEquipos
+
 
 
 #---------------Fin definiciones de funciones ------------

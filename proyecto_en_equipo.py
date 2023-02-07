@@ -4,7 +4,7 @@ def main(page: ft.Page):
     page.title = "Proyecto Futbolístico"
     #page.vertical_alignment = ft.MainAxisAlignment.CENTER//// esto es para centrarlo en el medio
     
-    vEquipos=["Cadiz CF","AOVE Villacarrillo","Málaga CF","FC Barcelona","Club Deportivo Alcoyano"]
+    #vEquipos=["Cadiz CF","AOVE Villacarrillo","Málaga CF","FC Barcelona","Club Deportivo Alcoyano"]
     vEquipos_Seleccionados = []
 
 
@@ -42,6 +42,8 @@ def main(page: ft.Page):
         elif (
             dropDownEquipos.value == "Club Deportivo Alcoyano"):
             img.src = "Imágenes/CDAlcoyano.png"
+        else:
+            img.src = "Imágenes/SinFoto.png"
                 
         page.update()
 
@@ -49,13 +51,25 @@ def main(page: ft.Page):
         vEquipos=[]
         f=open("Equipos.txt", "r")
 
-        for linea in f:
-            vEquipos.append(linea)
+        linea = f.readline()
+        vEquipos = linea.split(sep=";")
+            
 
         f.close()
         return vEquipos
 
-    page.update()
+    def guardarEquipos():
+        vEquipos_Seleccionados=[]
+        f1=open("Equipos_Guardados.txt", "w")
+
+        linea1 = f1.writeline()
+        vEquipos_Seleccionados = linea1.split(sep=";")
+            
+
+        f1.close()
+        return vEquipos_Seleccionados
+
+        
 
 
 
@@ -66,6 +80,7 @@ def main(page: ft.Page):
  #Componentes Flet
     img = ft.Image(src=f"g")
     bt=ft.ElevatedButton(text="Seleccionar equipo", on_click=botonGuardar)
+    bt1=ft.FloatingActionButton(text="Guardar", on_click=guardarEquipos,width=100)
     dropDownEquipos = ft.Dropdown(label="Equipos",on_change=cambiarFoto, width=400)
     lv = ft.ListView(expand=1, spacing=5, padding=20, auto_scroll=True)
 
@@ -77,14 +92,17 @@ def main(page: ft.Page):
 #---------------Inicio programa principal----------------
 
     #Inserto los 
-    # dropDownEquipos desde la lista   
+    # dropDownEquipos desde la lista  
+
+    vEquipos = cargarequipos()
+    print (vEquipos)
     for equipo in vEquipos:
         dropDownEquipos.options.append(ft.dropdown.Option(equipo))
 
     
     
     #Añadir componestes a la vista
-    page.add(dropDownEquipos,img,bt,lv)
+    page.add(dropDownEquipos,img,bt,lv,bt1)
     
    
                               

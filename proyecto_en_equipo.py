@@ -55,6 +55,8 @@ def main(page: ft.Page):
         f.close()
         return vEquipos
 
+    page.update()
+
 
 
 #---------------Fin definiciones de funciones ------------

@@ -10,9 +10,12 @@ def main(page: ft.Page):
 
     def botonGuardar(e):
         equipo = dropDownEquipos.value 
+        imagen= img.src
         if (vEquipos_Seleccionados.count(equipo)==0):
             vEquipos_Seleccionados.append(equipo)
-            lv.controls.append(ft.Text(equipo))
+            row=ft.Row(controls=[ft.Text(equipo),ft.Image(imagen,width=50,height=50)],)# en la misma linea aparecer el equipo y su correspondiente imagen
+            lv.controls.append(row)         #ya esta metido en el list_view
+            
         else:
             dlg = ft.AlertDialog(title=ft.Text("EQUIPO REPETIDO!!!"))
             page.dialog = dlg

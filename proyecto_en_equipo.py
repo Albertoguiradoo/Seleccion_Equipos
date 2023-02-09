@@ -61,16 +61,16 @@ def main(page: ft.Page):
         f.close()
         return vEquipos
 
-    def guardarEquipos():
-        vEquipos_Seleccionados=[]
-        f1=open("Equipos_Guardados.txt", "w")
-
-        linea1 = f1.writeline()
-        vEquipos_Seleccionados = linea1.split(sep=";")
+    def guardarEquipos(e):
+        
+        f1=open("EquiposGuardados.txt", "w")
+        for i in vEquipos_Seleccionados:
+            f1.write(i+"\n")
+        
             
 
         f1.close()
-        return vEquipos_Seleccionados
+       
 
         
 

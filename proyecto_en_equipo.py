@@ -12,6 +12,7 @@ def main(page: ft.Page):
         equipo = dropDownEquipos.value 
         if (vEquipos_Seleccionados.count(equipo)==0):
             vEquipos_Seleccionados.append(equipo)
+            ft.Row(ft.Container(expand=1, content=ft.Text("A")))
             lv.controls.append(ft.Text(equipo))
         else:
             dlg = ft.AlertDialog(title=ft.Text("EQUIPO REPETIDO!!!"))
